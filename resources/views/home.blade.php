@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>AdminPage</title>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="{{asset('assets/truongcss.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -106,14 +110,17 @@
                 .then(response => response.json())
                 .then(data => {
 
-                    var hihi = '',
-                        i = 0
+                    var hihi = '<div class="product">',
+                        haha = '<div class="re_product">',
+                        i = 0,
+                        j = 0
+                    var data1 = data.data2
                     var data = data.data
                     data.map(() => {
                         hihi += `
                             <h3> Sản phẩm thứ ` + (i+1) + `
                             <p> Id sản phẩm là: ` + data[i]['id'] + ` </p>
-                            <p> Product id: ` + data[i].product_id + ` </p>
+                            //  <p> Product id: ` + data[i].product_id + ` </p>
                             <p> Customer Id: ` + data[i].customer_id + ` </p>
                             <p> Quantity: ` + data[i].quantity + ` </p>
                             <p> Giá sản phẩm: ` + data[i].price + ` </p>
@@ -126,7 +133,30 @@
                         `
                         i++
                     })
-                    root.innerHTML = hihi
+
+                    data1.map(() => {
+                        haha += `
+                            <h3> Return Product: ` + (j+1) + `
+                            <p> Id sản phẩm là: ` + data1[j]['id'] + ` </p>
+                            // <p> Product id: ` + data1[j].product_id + ` </p>
+                            <p> Customer Id: ` + data1[j].customer_id + ` </p>
+                            <p> Quantity: ` + data1[j].quantity + ` </p>
+                            <p> Giá sản phẩm: ` + data1[j].price + ` </p>
+                            <p> Mô tả sản phẩm: ` + data1[j].description + ` </p>
+                            <p> Ngày tạo: ` + data1[j].created + ` </p>
+                            <p> Form: ` + data1[j].form + ` </p>
+                            <p> To: ` + data1[j].to + ` </p>
+                            <p> State: ` + data1[j].state + ` </p>
+                            <br>
+                        `
+                        j++
+                    })
+
+                    hihi+='</div>'
+                    haha+='</div>'
+
+                    root.innerHTML += hihi
+                    root.innerHTML += haha
                 })
                 .catch((error) => {
                     console.error('Error:', error);

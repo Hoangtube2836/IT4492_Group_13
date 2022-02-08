@@ -238,3 +238,13 @@ header{
  .abv {
      background-color: #44c9e0;
  }
+ .product{
+   float: left;
+   background-color: #606162;
+   display: block;
+ }
+ .re_product{
+   float: right;
+   background-color: #606162;
+   display: block;
+ }
